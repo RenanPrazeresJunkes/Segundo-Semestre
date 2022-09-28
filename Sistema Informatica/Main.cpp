@@ -1,7 +1,7 @@
-/*Um empresa de Suprimentos de Inform√°tica contratou uma equipe
+/*Um empresa de Suprimentos de Inform·tica contratou uma equipe
 de analista e desenvolvedor de sistemas para desenvolver um sistema
-de controle de clientes, funcion√°rios, fornecedores e produtos.
- Deve apresentar as opera√ß√µes de Cadastrar, consultar(listar todos e
+de controle de clientes, funcion·rios, fornecedores e produtos.
+ Deve apresentar as operaÁıes de Cadastrar, consultar(listar todos e
   Consultar por nome),alterar e excluir para todos os controles.
 */
 
@@ -17,7 +17,7 @@ de controle de clientes, funcion√°rios, fornecedores e produtos.
 
 using namespace std;   //para usar comandos C++ junto com o C
 
-//declara√ß√£o das estruturas de registros das base de dados
+//declaraÁ„o das estruturas de registros das base de dados
 
 struct dadosCli
 {
@@ -27,7 +27,7 @@ struct dadosCli
     float sbaseCli;      //cliente.sbase
     float vcomprasCli;
     //cliente.vcompras.
-}Cliente;//vari√°vel de registro com os campos
+}Cliente;//vari·vel de registro com os campos
 
 struct dadosForn
 {
@@ -56,10 +56,10 @@ struct dadosFunc
 }Funcionario;
 
 void menu();
-//declara√ß√£o de vari√°veis Global
+//declaraÁ„o de vari·veis Global
 //declarar os Arquivos(FILE) e seus auxiliares
 
-FILE *fClientes;    // file  - Arquivo    * - Ponteiro din√Çmico
+FILE *fClientes;    // file  - Arquivo    * - Ponteiro din¬mico
 FILE *fFornecedores;
 FILE *fProdutos;
 FILE *fFuncionarios;
@@ -67,15 +67,15 @@ FILE *fAuxCli;
 FILE *fAuxForn;
 FILE *fAuxProd;
 FILE *fAuxFunc;
-int opc;//vari√°vel op√ß√£o global para no programa principal e na rotina menu optarmos pela fun√ß√£o a ser executada conforme sele√ß√£o pelo usu√°rio
-//criar as fun√ß√µes de cria√ß√£o dos arquivos
+int opc;//vari·vel opÁ„o global para no programa principal e na rotina menu optarmos pela funÁ„o a ser executada conforme seleÁ„o pelo usu·rio
+//criar as funÁıes de criaÁ„o dos arquivos
 
-//modularizar as fun√ß√µes -
-void cria_arqCli() //fun√ß√£o que vai criar o arquivo fClientes
+//modularizar as funÁıes -
+void cria_arqCli() //funÁ„o que vai criar o arquivo fClientes
 {//inicia o escopo da rotina cria arquivo de clientes
     if ((fClientes = fopen("clientes.dat","a"))==NULL) //criando e abrindo o arquivo Clientes
     {
-        printf("\n Erro de cria√ß√£o do arquivo Clientes");
+        printf("\n Erro de criaÁ„o do arquivo Clientes");
         return;
     }
     printf("\n Arquivo Clientes Criado");
@@ -85,7 +85,7 @@ void cria_arqCli() //fun√ß√£o que vai criar o arquivo fClientes
 void cria_arqAuxCli(){
     if((fAuxCli=fopen("auxcli.dat","a"))==NULL){
         system("cls");//system clear screen  - Limpa tela
-        printf("\n Erro de cria√ß√£o de arquivo AuxCli");  //cout<<"Erro de criacao de arquivo";
+        printf("\n Erro de criaÁ„o de arquivo AuxCli");  //cout<<"Erro de criacao de arquivo";
         return;
     }printf("\n Arquivo AuxCli Criado");
     fclose(fAuxCli);
@@ -95,7 +95,7 @@ void cria_arqProd()
 {
     if ((fProdutos = fopen("produtos.dat","a"))==NULL) //criando e abrindo o arquivo Produtos
     {
-        printf("\n Erro de cria√ß√£o do arquivo Produtos");
+        printf("\n Erro de criaÁ„o do arquivo Produtos");
         return;
     }
     printf("\n Arquivo Clientes Criado");
@@ -105,7 +105,7 @@ void cria_arqProd()
 void cria_arqAuxProd(){
     if((fAuxProd=fopen("auxprod.dat","a"))==NULL){
         system("cls");
-        printf("\n Erro de cria√ß√£o de arquivo AuxProd");
+        printf("\n Erro de criaÁ„o de arquivo AuxProd");
         return;
     }printf("\n Arquivo AuxProd Criado");
     fclose(fAuxProd);
@@ -115,17 +115,17 @@ void cria_arqFunc()
 {
     if ((fFuncionarios = fopen("funcionarios.dat","a"))==NULL)
     {
-        printf("\n Erro de cria√ß√£o do arquivo Funcionarios");
+        printf("\n Erro de criaÁ„o do arquivo Funcionarios");
         return;
     }
-    printf("\n Arquivo Funcion√°rio Criado");
+    printf("\n Arquivo Funcion·rio Criado");
     fclose(fFuncionarios);
 }
 
 void cria_arqAuxFunc(){
     if((fAuxFunc=fopen("auxfunc.dat","a"))==NULL){
         system("cls");
-        printf("\n Erro de cria√ß√£o de arquivo AuxProd");
+        printf("\n Erro de criaÁ„o de arquivo AuxProd");
         return;
     }printf("\n Arquivo AuxFunc Criado");
     fclose(fAuxFunc);
@@ -136,7 +136,7 @@ void cria_arqForn()
 {
     if ((fFornecedores = fopen("Fornecedores.dat","a"))==NULL) //criando e abrindo o arquivo Fornecedores
     {
-        printf("\n Erro de cria√ß√£o do arquivo Fornecedores");
+        printf("\n Erro de criaÁ„o do arquivo Fornecedores");
         return;
     }
     printf("\n Arquivo Fornecedores Criado");
@@ -146,27 +146,27 @@ void cria_arqForn()
 void cria_arqAuxForn(){
     if((fAuxForn=fopen("auxforn.dat","a"))==NULL){
         system("cls");//system clear screen  - Limpa tela
-        printf("\n Erro de cria√ß√£o de arquivo AuxForn");  //cout<<"Erro de criacao de arquivo";
+        printf("\n Erro de criaÁ„o de arquivo AuxForn");  //cout<<"Erro de criacao de arquivo";
         return;
     }
     fclose(fAuxForn);
 }
 
-//Iniciar as opera√ß√µes com arquivo - Cadastrar, Consultar, Alterar, Excluir
-//Opera√ß√µes do arquivo Clientes
+//Iniciar as operaÁıes com arquivo - Cadastrar, Consultar, Alterar, Excluir
+//OperaÁıes do arquivo Clientes
 
 void cadastraCli() //cadastro do arquivo clientes
-{ char op; //vari√°vel op√ß√£o
+{ char op; //vari·vel opÁ„o
     system("cls");  //limpa tela
-    int tamanho=0; // declara√ß√£o da vari√°veltamanho para capturar a qtdide de registros cadastrdas
+    int tamanho=0; // declaraÁ„o da vari·veltamanho para capturar a qtdide de registros cadastrdas
     fClientes = fopen("clientes.dat","r+");//abre o arquivo clientes para leitura e escrita
-    rewind(fClientes);  //joga para o primeiro registro do arquivo - posi√ß√£o 0
-    do{ //la√ßo de repeti√ß√£o para contar a qtidade de registros do arquivo
+    rewind(fClientes);  //joga para o primeiro registro do arquivo - posiÁ„o 0
+    do{ //laÁo de repetiÁ„o para contar a qtidade de registros do arquivo
         fread(&Cliente,sizeof(Cliente),1,fClientes);//leitura do registro no arquivo
         tamanho++;} //tamanho = tamanho + 1 - Contar qtos registros
-    while(!feof(fClientes)); //fa√ßa at√© o final do arquivo
+    while(!feof(fClientes)); //faÁa atÈ o final do arquivo
 
-    fseek(fClientes,sizeof(Cliente),tamanho); //aponta para a posi√ß√£o do arquivo correspondente ao tamanho
+    fseek(fClientes,sizeof(Cliente),tamanho); //aponta para a posiÁ„o do arquivo correspondente ao tamanho
     do
     {
         system("cls");//limpa tela
@@ -182,10 +182,10 @@ void cadastraCli() //cadastro do arquivo clientes
         printf("\n Digite o valor da compra:");
         cin>>Cliente.vcomprasCli;
         tamanho=tamanho+fwrite(&Cliente,sizeof(struct dadosCli),1,fClientes); //gravando o registro no arquivo
-        //tamanho recebe incremento para gravar o pr√≥ximo registro.
+        //tamanho recebe incremento para gravar o prÛximo registro.
         printf("\n Continuar cadastrando <S> ou <N>:");
-        cin>>op;//ler a op√ß√£o
-        op = toupper(op); //comando que coloca o caracter em ma√≠usculo
+        cin>>op;//ler a opÁ„o
+        op = toupper(op); //comando que coloca o caracter em maÌusculo
     }while(op =='S'); // enquanto op igual S
     fclose(fClientes);// fecha o arquivo clientes
 }
@@ -212,164 +212,164 @@ void consultaCli() //lista todos os registros do arquivo cliente
     getch(); //espera ser teclado algo para continuar
 }
 
-void consulta_nomeCli(){  //lista o registro selecionado pelo usu√°rio do arquivo cliente
-    //vari√°veis locais - somente enxergadas aqui
-    char nom_pro[20]; //vari√°vel para o usu√°rio digitar o nome do usu√°rio a ser pesquisado no arquivo
-    int achou=1;  //vari√°vel com sinlizador(flag) para indicar que achou o cliente e pode listar os dados e parar a pesquisa no arquivo
-    int localizou=1;//vari√°vel que localizou o cliente desejado
-    char op; //vari√°vel op√ß√£o
+void consulta_nomeCli(){  //lista o registro selecionado pelo usu·rio do arquivo cliente
+    //vari·veis locais - somente enxergadas aqui
+    char nom_pro[20]; //vari·vel para o usu·rio digitar o nome do usu·rio a ser pesquisado no arquivo
+    int achou=1;  //vari·vel com sinlizador(flag) para indicar que achou o cliente e pode listar os dados e parar a pesquisa no arquivo
+    int localizou=1;//vari·vel que localizou o cliente desejado
+    char op; //vari·vel opÁ„o
 
     system("cls"); //limpa a tela
     fClientes=fopen("clientes.dat","r+"); // abre o arquivo para leitura e escrita
     fseek(fClientes,sizeof(struct dadosCli),0);//aponta pora o Registro 0(inicial) do arquivo
-    printf("\n Digite o Nome p/ Procura : "); //Pergunta ao usu√°rio qual cliente deseja buscar na consulta
-    cin>>nom_pro;//Us√°rio Digita o nome do cliente a ser procurado
-    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//la√ßo de repeti√ß√£o para percorrer registro a registro no arquivo at√© localizar o cliente desejado
-        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu√°rio com o nome do cliente do registro do arquivo
+    printf("\n Digite o Nome p/ Procura : "); //Pergunta ao usu·rio qual cliente deseja buscar na consulta
+    cin>>nom_pro;//Us·rio Digita o nome do cliente a ser procurado
+    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laÁo de repetiÁ„o para percorrer registro a registro no arquivo atÈ localizar o cliente desejado
+        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu·rio com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
         //e subtrai do valor hexadecimal dos caracteres da string nome do cliente para ser procurado (nome_pro)
-        //se forem iguais o resultado √© zero e √© alocado para a vari√°vel achou, caso contr√°rio vai 1 para a var√≠avel
+        //se forem iguais o resultado È zero e È alocado para a vari·vel achou, caso contr·rio vai 1 para a varÌavel
         if(achou==0)
-        { //nomes s√£o iguais ent√£o achou o cliente desejado
-            printf("\n O Nome ‚Äö.................:%s",Cliente.nomeCli);//lista o nome do cliente na tela
-            printf("\n A Idade ‚Äö................:%d",Cliente.idadeCli);//lista a idade do cliente na tela
-            printf("\n O CPFC ‚Äö................:%d",Cliente.CPFC);
-            printf("\n O Sal√°rio Bruto ‚Äö........:%0.2f",Cliente.sbaseCli);
-            printf("\n O Valor da Compra ‚Äö......:%0.2f",Cliente.vcomprasCli);
+        { //nomes s„o iguais ent„o achou o cliente desejado
+            printf("\n O Nome Ç.................:%s",Cliente.nomeCli);//lista o nome do cliente na tela
+            printf("\n A Idade Ç................:%d",Cliente.idadeCli);//lista a idade do cliente na tela
+            printf("\n O CPFC Ç................:%d",Cliente.CPFC);
+            printf("\n O Sal·rio Bruto Ç........:%0.2f",Cliente.sbaseCli);
+            printf("\n O Valor da Compra Ç......:%0.2f",Cliente.vcomprasCli);
             printf("\n_____________________________________________\n");
             getch();//espera algoa ser teclado para continuar, permite que vejamos os dados na tela
             localizou=0;
         }}
 
-    if(localizou == 1){ //varreu todo o arquivo e n√£o encontrou o nome do cliente para ser consultado
-        printf("\n Cliente n√£o Cadastrado\n"); //lista na tela
-        printf("\n Cadastrar Cliente <S> ou <N>:");//lista na tela para pedir se o usu√°rio deseja cadastrar este cliente n√£o encontrado
-        cin>>op;//l√™ a op√ß√£o do usu√°rio em cadastrar ou n√£o
-        op = toupper(op);//pega o a caracter S ou N digitado pelo usu√°rio e coloca em letra ma√≠uscula
-        if (op=='S'){ //compara o valor da vari√°vel op para cadastrar ou n√£o o novo cliente
-            cadastraCli();} //chama a fun√ß√£o para cadstrar o novo cliente
+    if(localizou == 1){ //varreu todo o arquivo e n„o encontrou o nome do cliente para ser consultado
+        printf("\n Cliente n„o Cadastrado\n"); //lista na tela
+        printf("\n Cadastrar Cliente <S> ou <N>:");//lista na tela para pedir se o usu·rio deseja cadastrar este cliente n„o encontrado
+        cin>>op;//lÍ a opÁ„o do usu·rio em cadastrar ou n„o
+        op = toupper(op);//pega o a caracter S ou N digitado pelo usu·rio e coloca em letra maÌuscula
+        if (op=='S'){ //compara o valor da vari·vel op para cadastrar ou n„o o novo cliente
+            cadastraCli();} //chama a funÁ„o para cadstrar o novo cliente
         else {fclose(fClientes);} //fecha arquivo clientes
-        getch();}}//espera algo a ser teclado e saia da fun√ß√£o de consulta cliente pelo nome
+        getch();}}//espera algo a ser teclado e saia da funÁ„o de consulta cliente pelo nome
 
-void alteraCli(){ //Procura o registro selecionado pelo usu√°rio do arquivo cliente para altera√ß√£o
-    char nom_pro[20]; //vari√°vel para o usu√°rio digitar o nome do usu√°rio a ser pesquisado no arquivo
-    int achou;//vari√°vel com sinalizador(flag) para indicar que achou o cliente e pode listar os dados para fazer a altera√ß√£o e parar a pesquisa no arquivo
-    int pos=0;//vari√°vel para incrementar a posi√ß√£o do registro dentro do arquivo cliente
+void alteraCli(){ //Procura o registro selecionado pelo usu·rio do arquivo cliente para alteraÁ„o
+    char nom_pro[20]; //vari·vel para o usu·rio digitar o nome do usu·rio a ser pesquisado no arquivo
+    int achou;//vari·vel com sinalizador(flag) para indicar que achou o cliente e pode listar os dados para fazer a alteraÁ„o e parar a pesquisa no arquivo
+    int pos=0;//vari·vel para incrementar a posiÁ„o do registro dentro do arquivo cliente
     system("cls");//limpa a tela
     fClientes=fopen("clientes.dat","r+");// abre o arquivo para leitura e escrita
     fseek(fClientes,sizeof(struct dadosCli),0);//aponta pora o Registro 0(inicial) do arquivo
-    printf("\n Digite o Nome p/ Procura : ");//Pergunta ao usu√°rio qual cliente deseja buscar na consulta
-    cin>> nom_pro;//Us√°rio Digita o nome do cliente a ser procurado
-    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//la√ßo de repeti√ß√£o para percorrer registro a registro no arquivo at√© localizar o cliente desejado
-        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu√°rio com o nome do cliente do registro do arquivo
+    printf("\n Digite o Nome p/ Procura : ");//Pergunta ao usu·rio qual cliente deseja buscar na consulta
+    cin>> nom_pro;//Us·rio Digita o nome do cliente a ser procurado
+    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laÁo de repetiÁ„o para percorrer registro a registro no arquivo atÈ localizar o cliente desejado
+        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu·rio com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
         //e subtrai do valor hexadecimal dos caracteres da string nome do cliente para ser procurado (nome_pro)
-        //se forem iguais o resultado √© zero e √© alocado para a vari√°vel achou, caso contr√°rio vai 1 para a var√≠avel
-        pos++;//incrementa a vari√°vel pos 1 a 1 para posicionar o pr√≥ximo registro dentro do arquivo cliente
-        if(achou==0){ //nomes s√£o iguais ent√£o achou o cliente desejado
-            printf("\n O Nome ‚Äö.................:%s",Cliente.nomeCli); //lista o nome do cliente encontrado na tela
-            printf("\n A Idade ‚Äö................:%d",Cliente.idadeCli);
-            printf("\n O CPFFC ‚Äö................:%d",Cliente.CPFC);
-            printf("\n O Sal√°rio Bruto ‚Äö........:%0.2f",Cliente.sbaseCli);
-            printf("\n O Valor da Compra ‚Äö......:%0.2f",Cliente.vcomprasCli);
+        //se forem iguais o resultado È zero e È alocado para a vari·vel achou, caso contr·rio vai 1 para a varÌavel
+        pos++;//incrementa a vari·vel pos 1 a 1 para posicionar o prÛximo registro dentro do arquivo cliente
+        if(achou==0){ //nomes s„o iguais ent„o achou o cliente desejado
+            printf("\n O Nome Ç.................:%s",Cliente.nomeCli); //lista o nome do cliente encontrado na tela
+            printf("\n A Idade Ç................:%d",Cliente.idadeCli);
+            printf("\n O CPFFC Ç................:%d",Cliente.CPFC);
+            printf("\n O Sal·rio Bruto Ç........:%0.2f",Cliente.sbaseCli);
+            printf("\n O Valor da Compra Ç......:%0.2f",Cliente.vcomprasCli);
             printf("_____________________________________________\n");
             printf("Digite <enter> para continuar e alterar____________\n");
             getch(); //espera algoa ser teclado para continuar, permite que vejamos os dados na tela
-            //Come√ßa a pedir para o usu√°rio os novos dados a ser alterados
-            printf("\n Digite a alter√ß√£o do nome do cliente: %s",Cliente.nomeCli);//Apresenta na tela o que o usu√°rio deve alterar
-            cin>>Cliente.nomeCli;//L√™ o novo valor de altera√ß√£o do nome do cliente
-            printf("\n Digite a idade:");//Apresenta na tela o que o usu√°rio deve alterar
-            cin>>Cliente.idadeCli;//L√™ o novo valor de altera√ß√£o da idade do cliente
+            //ComeÁa a pedir para o usu·rio os novos dados a ser alterados
+            printf("\n Digite a alterÁ„o do nome do cliente: %s",Cliente.nomeCli);//Apresenta na tela o que o usu·rio deve alterar
+            cin>>Cliente.nomeCli;//LÍ o novo valor de alteraÁ„o do nome do cliente
+            printf("\n Digite a idade:");//Apresenta na tela o que o usu·rio deve alterar
+            cin>>Cliente.idadeCli;//LÍ o novo valor de alteraÁ„o da idade do cliente
             printf("\n Digite o salario base:");
             cin>>Cliente.sbaseCli;
             printf("\n Digite o CPFC");
             cin>>Cliente.CPFC;
             printf("\n Digite o valor da compra:");
             cin>>Cliente.vcomprasCli;
-            fseek(fClientes,pos*sizeof(struct dadosCli),SEEK_SET);//posiciona o ponteiro de registro do arquivo na posi√ß√£o pos registrada para alterar o registro certo dentro do arquivo
+            fseek(fClientes,pos*sizeof(struct dadosCli),SEEK_SET);//posiciona o ponteiro de registro do arquivo na posiÁ„o pos registrada para alterar o registro certo dentro do arquivo
             fwrite(&Cliente,sizeof(struct dadosCli),1,fClientes);//Grava os dados alterados no registro certo dentro do arquivo
             fseek(fClientes,sizeof(struct dadosCli),SEEK_END);}
         printf("Digite <enter> para continuar___________________\n");
         getch();}//espera algoa ser teclado para continuar, permite que vejamos os dados na tela
-    fclose(fClientes);}//fecha o arquivo Clientes e sai da fun√ß√£o altera
+    fclose(fClientes);}//fecha o arquivo Clientes e sai da funÁ„o altera
 
 
-void excluiCli() //Procura o registro selecionado pelo usu√°rio do arquivo cliente para exclus√£o
+void excluiCli() //Procura o registro selecionado pelo usu·rio do arquivo cliente para exclus„o
 {
-    char nom_pro[20];//vari√°vel para o usu√°rio digitar o nome do usu√°rio a ser pesquisado no arquivo
-    int achou=1;//vari√°vel com sinalizador(flag) para indicar que achou o cliente e pode listar os dados para fazer a exclus√£o e parar a pesquisa no arquivo
-    int tamanhoaux=0;//var√≠aveis para ter o controle de registro a registro do tamanho do arquivo auxiliar de clientes
-    int tamanhocli=0;//var√≠aveis para ter o controle de registro a registro do tamanho do arquivo de clientes
+    char nom_pro[20];//vari·vel para o usu·rio digitar o nome do usu·rio a ser pesquisado no arquivo
+    int achou=1;//vari·vel com sinalizador(flag) para indicar que achou o cliente e pode listar os dados para fazer a exclus„o e parar a pesquisa no arquivo
+    int tamanhoaux=0;//varÌaveis para ter o controle de registro a registro do tamanho do arquivo auxiliar de clientes
+    int tamanhocli=0;//varÌaveis para ter o controle de registro a registro do tamanho do arquivo de clientes
 
     system("cls");//linpa tela
     fClientes=fopen("clientes.dat","r+");// abre o arquivo para leitura e escrita
     fseek(fClientes,sizeof(struct dadosCli),0);//aponta pora o Registro 0(inicial) do arquivo
-    cria_arqAuxCli();//chama a fun√ß√£o para criar o arquivo auxiliar de clientes
+    cria_arqAuxCli();//chama a funÁ„o para criar o arquivo auxiliar de clientes
     fAuxCli=fopen("auxcli.dat","r+");//abre o arquivo auxiliar de clientes para leitura e escrita
-    fseek(fAuxCli,sizeof(struct dadosCli),0);//aponta por segura√ß√£o ao registro 0(inicial) do arquivo auxiliar de clientes
-    //come√ßa a procura do registro a ser exclu√≠do no arquivo clientes
-    printf("\n Digite o Nome do cliente p/ Procura : ");//Pergunta ao usu√°rio qual cliente deseja buscar na consulta para ser exclu√≠do
-    cin>> nom_pro;//Us√°rio Digita o nome do cliente a ser procurado para exclus√£o
-    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//la√ßo de repeti√ß√£o para ler registro a registro do arquivo clientes at√© encontrar o desejado
-        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu√°rio com o nome do cliente do registro do arquivo
+    fseek(fAuxCli,sizeof(struct dadosCli),0);//aponta por seguraÁ„o ao registro 0(inicial) do arquivo auxiliar de clientes
+    //comeÁa a procura do registro a ser excluÌdo no arquivo clientes
+    printf("\n Digite o Nome do cliente p/ Procura : ");//Pergunta ao usu·rio qual cliente deseja buscar na consulta para ser excluÌdo
+    cin>> nom_pro;//Us·rio Digita o nome do cliente a ser procurado para exclus„o
+    while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laÁo de repetiÁ„o para ler registro a registro do arquivo clientes atÈ encontrar o desejado
+        achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usu·rio com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
         //e subtrai do valor hexadecimal dos caracteres da string nome do cliente para ser procurado (nome_pro)
-        //se forem iguais o resultado √© zero e √© alocado para a vari√°vel achou, caso contr√°rio vai 1 para a var√≠avel
-        if(achou==0){ //nomes s√£o iguais ent√£o achou o cliente desejado
-            printf("\n O Nome ‚Äö.................:%s",Cliente.nomeCli);//lista o nome do cliente encontrado na tela
-            printf("\n A Idade ‚Äö................:   %d",Cliente.idadeCli);
-            printf("\n O CPFC ‚Äö................:   %d",Cliente.CPFC);
-            printf("\n O Sal√°rio Bruto ‚Äö........:%0.2f",Cliente.sbaseCli);
-            printf("\n O Valor da Compra ‚Äö......:%0.2f",Cliente.vcomprasCli);
+        //se forem iguais o resultado È zero e È alocado para a vari·vel achou, caso contr·rio vai 1 para a varÌavel
+        if(achou==0){ //nomes s„o iguais ent„o achou o cliente desejado
+            printf("\n O Nome Ç.................:%s",Cliente.nomeCli);//lista o nome do cliente encontrado na tela
+            printf("\n A Idade Ç................:   %d",Cliente.idadeCli);
+            printf("\n O CPFC Ç................:   %d",Cliente.CPFC);
+            printf("\n O Sal·rio Bruto Ç........:%0.2f",Cliente.sbaseCli);
+            printf("\n O Valor da Compra Ç......:%0.2f",Cliente.vcomprasCli);
             printf("_____________________________________________\n");
             getch();//espera algoa ser teclado para continuar, permite que vejamos os dados na tela
         }
-        else{ //caso n√£o entre no achou==0 ent√£o vai para esta parte do sen√£o para transferir uma c√≥pia do registro que n√£o √© o desejado a excluir
+        else{ //caso n„o entre no achou==0 ent„o vai para esta parte do sen„o para transferir uma cÛpia do registro que n„o È o desejado a excluir
             //do arquivo clientes para o arquivo auxiliar do cliente
             tamanhoaux=tamanhoaux+fwrite(&Cliente,sizeof(struct dadosCli),1,fAuxCli);}}//grava o registro do arquivo cliente no arquivo aux cliente um a um
-    //cada registro gravado no aux a fun√ß√£o fwrite gera 1 que √© incerementado na vari√°vel tamanhoaux para gravar
-    //no pr√≥ximo registro livre no arquivo e n√£o sobrepor resgistros.
+    //cada registro gravado no aux a funÁ„o fwrite gera 1 que È incerementado na vari·vel tamanhoaux para gravar
+    //no prÛximo registro livre no arquivo e n„o sobrepor resgistros.
     fclose(fAuxCli);//fecha arquivo AuxCli
     fclose(fClientes);//fecha arquivo Clientes
-    remove("clientes.dat");//remove o arquivo inicial de Clientes totalmente pois j√° trasnferimos aqueles registros com excess√£o do a ser exclu√≠do
-    cria_arqCli();//chama a fun√ß√£o para criar novamente o arquivo Clientes zerado
+    remove("clientes.dat");//remove o arquivo inicial de Clientes totalmente pois j· trasnferimos aqueles registros com excess„o do a ser excluÌdo
+    cria_arqCli();//chama a funÁ„o para criar novamente o arquivo Clientes zerado
     fClientes=fopen("clientes.dat","r+");//Abre o novo arquivo Clientes para ler e gravar dados
-    fseek(fClientes,sizeof(struct dadosCli),0);//Aponta por seguran√ßa para o registro 0(inicial) do arquivo clientes
+    fseek(fClientes,sizeof(struct dadosCli),0);//Aponta por seguranÁa para o registro 0(inicial) do arquivo clientes
 
-    fAuxCli=fopen("auxcli.dat","r+");//abre o arquivi AuxCli para transferir de volta os registros dos clientes que n√£o eram para ser exclu√≠dos
-    fseek(fAuxCli,sizeof(struct dadosCli),0);//Aponta por seguran√ßa para o registro 0(inicial) do arquivo AuxCli
-    while(fread(&Cliente,sizeof(Cliente),1,fAuxCli)==1) {//la√ßo de repeti√ß√£o para trasnferir registros 1 a 1 do arquivo AuxCli para o arquivo Clientes
+    fAuxCli=fopen("auxcli.dat","r+");//abre o arquivi AuxCli para transferir de volta os registros dos clientes que n„o eram para ser excluÌdos
+    fseek(fAuxCli,sizeof(struct dadosCli),0);//Aponta por seguranÁa para o registro 0(inicial) do arquivo AuxCli
+    while(fread(&Cliente,sizeof(Cliente),1,fAuxCli)==1) {//laÁo de repetiÁ„o para trasnferir registros 1 a 1 do arquivo AuxCli para o arquivo Clientes
         tamanhocli=tamanhocli+fwrite(&Cliente,sizeof(struct dadosCli),1,fClientes);}//grava o registro do arquivo AucCLi no arquivo Clientes um a um
-    //cada registro gravado no Clinetes a fun√ß√£o fwrite gera 1 que √© incerementado na vari√°vel tamanhocli para gravar
-    //no pr√≥ximo registro livre no arquivo e n√£o sobrepor resgistros.
+    //cada registro gravado no Clinetes a funÁ„o fwrite gera 1 que È incerementado na vari·vel tamanhocli para gravar
+    //no prÛximo registro livre no arquivo e n„o sobrepor resgistros.
     fclose(fAuxCli);//fecha arquivo auxcli
-    remove("auxcli.dat");//remove completamente o arquivo auxcli pois j√° trensferimos os registros para o novo arquivo Clientes agora sem o registro que foi exclu√≠do
+    remove("auxcli.dat");//remove completamente o arquivo auxcli pois j· trensferimos os registros para o novo arquivo Clientes agora sem o registro que foi excluÌdo
     fclose(fClientes);//fecha aqruivo Clientes
-    printf("\n Cliente Exclu√≠do - Digite <enter> para continuar___________________\n");
+    printf("\n Cliente ExcluÌdo - Digite <enter> para continuar___________________\n");
     getch();//espera algoa ser teclado para continuar, permite que vejamos os dados na tela
-}//fecha a fun√ß√£o de exclus√£o de registro de clientes
+}//fecha a funÁ„o de exclus„o de registro de clientes
 
 
-void excl_arqCli(){//fun√ß√£o para excluir completamente todo o arquivo de clientes de uma vez s√≥
-    char op;//vari√°vel de seguran√ßa para optar em excluir mesmo ou n√£o o arquivo de clientes
-    printf("\n Deleta Arquivo <S> ou <N>? ");//informa√ß√£o na tela para o usu√°rio
-    cin>>op;//leitura da op√ß√£o de deletar S ou n√£o N o arquivo Clientes inteiro
-    op = toupper(op);//pega o a caracter S ou N digitado pelo usu√°rio e coloca em letra ma√≠uscula
-    if (op=='S')//compara o valor da vari√°vel op para cadastrar ou n√£o o novo cliente
+void excl_arqCli(){//funÁ„o para excluir completamente todo o arquivo de clientes de uma vez sÛ
+    char op;//vari·vel de seguranÁa para optar em excluir mesmo ou n„o o arquivo de clientes
+    printf("\n Deleta Arquivo <S> ou <N>? ");//informaÁ„o na tela para o usu·rio
+    cin>>op;//leitura da opÁ„o de deletar S ou n„o N o arquivo Clientes inteiro
+    op = toupper(op);//pega o a caracter S ou N digitado pelo usu·rio e coloca em letra maÌuscula
+    if (op=='S')//compara o valor da vari·vel op para cadastrar ou n„o o novo cliente
     {
         remove("clientes.dat");//remove completamente o arquivo inteiro de Clientes
-        printf("arquivo deletado");}//informa na tela para o usu√°rio que deletou o arquivo
+        printf("arquivo deletado");}//informa na tela para o usu·rio que deletou o arquivo
 
-    else{//sen√£o optou por N√£o - N
-        printf("\n Arquivo n√£o foi deletado por sua op√ß√£o");//informa na tela para o usu√°rio que na√µ deletou o arquivo
-        getch();}//espera algoa ser teclado para continuar, permite que vejamos os dados na tela e fecha a fun√ß√£o de exclus√£o total do arquivo Clientes
+    else{//sen„o optou por N„o - N
+        printf("\n Arquivo n„o foi deletado por sua opÁ„o");//informa na tela para o usu·rio que naı deletou o arquivo
+        getch();}//espera algoa ser teclado para continuar, permite que vejamos os dados na tela e fecha a funÁ„o de exclus„o total do arquivo Clientes
     cria_arqCli();}//cria arquivo para uso futuro
 
 
-void menuCli()//cria√ß√£o da fun√ß√£o Menu de op√ß√µes
+void menuCli()//criaÁ„o da funÁ„o Menu de opÁıes
 { //inicia o escopo da rotina Menu
     system("cls");//limpa a tela
-    printf("Menu de opcoes");//mostra na tela para o usu√°rios as op√ß√µes de Menu
+    printf("Menu de opcoes");//mostra na tela para o usu·rios as opÁıes de Menu
     printf("\n");//pula linha
     printf("1 - Cadastrar Clientes\n");
     printf("2 - Consultar Listar todos Clintes  \n");
@@ -379,9 +379,9 @@ void menuCli()//cria√ß√£o da fun√ß√£o Menu de op√ß√µes
     printf("6 - Exclui Arquivo total de Clientes\n");
     printf("7 - Voltar ao Menu principal \n");
     printf("8 - Fechar o programa \n");
-    printf("Digite uma opcao \n");//pede a op√ß√£o via teclado do usu√°rio
-    cin>>opc;//l√™ a vari√°vel global op√ß√£o do menu para chamar a fun√ßao
-    switch(opc)//estrutura de composi√ß√£o de v√°rios if
+    printf("Digite uma opcao \n");//pede a opÁ„o via teclado do usu·rio
+    cin>>opc;//lÍ a vari·vel global opÁ„o do menu para chamar a funÁao
+    switch(opc)//estrutura de composiÁ„o de v·rios if
     {
         case 1:cadastraCli();break; //caso a opc igual 1 chamada rotina cadastra executando-a retornando para o menu
         case 2:consultaCli();break;//caso a opc igual 2 chamada rotina consulta Cliente Listar executando-a retornando para o menu
@@ -390,7 +390,7 @@ void menuCli()//cria√ß√£o da fun√ß√£o Menu de op√ß√µes
         case 5:excluiCli();break;
         case 6:excl_arqCli();break;
         case 7:menu();break;
-        case 8:exit(0);//fun√ß√£o para sair totalmente do programa
+        case 8:exit(0);//funÁ„o para sair totalmente do programa
     }
 }//finaliza o escopo da rotina Menu
 
@@ -398,7 +398,7 @@ void menuCli()//cria√ß√£o da fun√ß√£o Menu de op√ß√µes
 
 
 
-//Opera√ß√µes do arquivo Funcionario
+//OperaÁıes do arquivo Funcionario
 
 void cadastraFunc()
 { char op;
@@ -416,11 +416,11 @@ void cadastraFunc()
     {
         system("cls");
 
-        cout<<"\n Digite o nome do funcion√°rio:";
+        cout<<"\n Digite o nome do funcion·rio:";
         cin>>Funcionario.nomeFunc;
          printf("\n Digite o Email:");
         cin>>Funcionario.emailFunc;
-        printf("\n Digite o Endere√ßo:");
+        printf("\n Digite o EndereÁo:");
         cin>>Funcionario.endeFunc;
         printf("\n Digite o salario:");
         cin>>Funcionario.salario;
@@ -445,9 +445,9 @@ void consultaFunc()
         system("cls");
         printf("Nome Funcionario  :        %s\n",Funcionario.nomeFunc);
         printf("Email Funcionario  :        %s\n",Funcionario.emailFunc);
-        printf("Endere√ßo funcion√°rio :       %s\n",Funcionario.endeFunc);
-        printf("Salario Funcion√°rio:     %.2f\n",Funcionario.salario);
-        printf("CPFF Funcion√°rio: %s\n",Funcionario.CPFF);
+        printf("EndereÁo funcion·rio :       %s\n",Funcionario.endeFunc);
+        printf("Salario Funcion·rio:     %.2f\n",Funcionario.salario);
+        printf("CPFF Funcion·rio: %s\n",Funcionario.CPFF);
         printf("\n Digite enter para continuar\n");
         getch();
     }
@@ -472,19 +472,19 @@ void consulta_nomeFunc(){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         if(achou==0)
         {
-            printf("\n O Nome ‚Äö.................:%s",Funcionario.nomeFunc);
-            printf("\n O Email ‚Äö.................:%s",Funcionario.emailFunc);
-            printf("\n O Endere√ßo ‚Äö................:%s",Funcionario.endeFunc);
-            printf("\n O Sal√°rio  ‚Äö........:%.2f",Funcionario.salario);
-            printf("\n O CPFF ‚Äö......:%s",Funcionario.CPFF);
+            printf("\n O Nome Ç.................:%s",Funcionario.nomeFunc);
+            printf("\n O Email Ç.................:%s",Funcionario.emailFunc);
+            printf("\n O EndereÁo Ç................:%s",Funcionario.endeFunc);
+            printf("\n O Sal·rio  Ç........:%.2f",Funcionario.salario);
+            printf("\n O CPFF Ç......:%s",Funcionario.CPFF);
             printf("\n_____________________________________________\n");
             getch();
             localizou=0;
         }}
 
     if(localizou == 1){
-        printf("\n Funcion√°rio n√£o Cadastrado\n");
-        printf("\n Cadastrar Funcion√°rio <S> ou <N>:");
+        printf("\n Funcion·rio n„o Cadastrado\n");
+        printf("\n Cadastrar Funcion·rio <S> ou <N>:");
         cin>>op;
         op = toupper(op);
         if (op=='S'){
@@ -505,24 +505,24 @@ void alteraFunc(){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         pos++;
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Funcionario.nomeFunc);
-            printf("\n O Email ‚Äö.................:%s",Funcionario.emailFunc);
-            printf("\n O Endere√ßo ‚Äö................:%s",Funcionario.endeFunc);
-            printf("\n O Sal√°rio ‚Äö........:%0.2f",Funcionario.salario);
-            printf("\n O CPFF ‚Äö......:%s",Funcionario.CPFF);
+            printf("\n O Nome Ç.................:%s",Funcionario.nomeFunc);
+            printf("\n O Email Ç.................:%s",Funcionario.emailFunc);
+            printf("\n O EndereÁo Ç................:%s",Funcionario.endeFunc);
+            printf("\n O Sal·rio Ç........:%0.2f",Funcionario.salario);
+            printf("\n O CPFF Ç......:%s",Funcionario.CPFF);
             printf("_____________________________________________\n");
             printf("Digite <enter> para continuar e alterar____________\n");
             getch();
 
-            printf("\n Digite a alter√ß√£o do nome do funcion√°rio: %s",Funcionario.nomeFunc);
+            printf("\n Digite a alterÁ„o do nome do funcion·rio: %s",Funcionario.nomeFunc);
             cin>>Funcionario.nomeFunc;
             printf("\n Digite o email:");
             cin>>Funcionario.emailFunc;
-            printf("\n Digite o endere√ßo:");
+            printf("\n Digite o endereÁo:");
             cin>>Funcionario.endeFunc;
             printf("\n Digite o salario:");
             cin>>Funcionario.salario;
-            printf("\n Digite o CPFF do funcion√°rio");
+            printf("\n Digite o CPFF do funcion·rio");
             cin>>Funcionario.CPFF;
             fseek(fFuncionarios,pos*sizeof(struct dadosFunc),SEEK_SET);
             fwrite(&Funcionario,sizeof(struct dadosFunc),1,fFuncionarios);
@@ -545,16 +545,16 @@ void excluiFunc()
     cria_arqAuxFunc();
     fAuxFunc=fopen("auxfunc.dat","r+");
     fseek(fAuxFunc,sizeof(struct dadosFunc),0);
-    printf("\n Digite o Nome do funcion√°rio p/ Procura : ");
+    printf("\n Digite o Nome do funcion·rio p/ Procura : ");
     cin>> nom_pro;
     while(fread(&Funcionario,sizeof(Funcionario),1,fFuncionarios)==1){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Funcionario.nomeFunc);
-            printf("\n O Email ‚Äö.................:%s",Funcionario.emailFunc);
-            printf("\n O Endere√ßo ‚Äö................:%s",Funcionario.endeFunc);
-            printf("\n O Sal√°rio ‚Äö........:%0.2f",Funcionario.salario);
-            printf("\n O CPFF ‚Äö......:%s",Funcionario.CPFF);
+            printf("\n O Nome Ç.................:%s",Funcionario.nomeFunc);
+            printf("\n O Email Ç.................:%s",Funcionario.emailFunc);
+            printf("\n O EndereÁo Ç................:%s",Funcionario.endeFunc);
+            printf("\n O Sal·rio Ç........:%0.2f",Funcionario.salario);
+            printf("\n O CPFF Ç......:%s",Funcionario.CPFF);
             printf("_____________________________________________\n");
             getch();
         }
@@ -573,7 +573,7 @@ void excluiFunc()
     fclose(fAuxFunc);
     remove("auxfunc.dat");
     fclose(fFuncionarios);
-    printf("\n Funcion√°rio Exclu√≠do - Digite <enter> para continuar___________________\n");
+    printf("\n Funcion·rio ExcluÌdo - Digite <enter> para continuar___________________\n");
     getch();
 }
 
@@ -588,7 +588,7 @@ void excl_arqFunc(){
         printf("arquivo deletado");}
 
     else{
-        printf("\n Arquivo n√£o foi deletado por sua op√ß√£o");
+        printf("\n Arquivo n„o foi deletado por sua opÁ„o");
         getch();}
     cria_arqFunc();}
 
@@ -596,14 +596,14 @@ void excl_arqFunc(){
 void menuFunc()
 {
     system("cls");
-    printf("Menu de op√ß√µes");
+    printf("Menu de opÁıes");
     printf("\n");
-    printf("1 - Cadastrar Funcion√°rios\n");
-    printf("2 - Consultar Listar todos Funcion√°rios  \n");
-    printf("3 - Consultar Por Nome de Funcion√°rio \n");
-    printf("4 - Alterar Registro de Funcion√°rio \n");
-    printf("5 - Excluir Registro de Funcion√°rios \n");
-    printf("6 - Exclui Arquivo total de Funcion√°rios\n");
+    printf("1 - Cadastrar Funcion·rios\n");
+    printf("2 - Consultar Listar todos Funcion·rios  \n");
+    printf("3 - Consultar Por Nome de Funcion·rio \n");
+    printf("4 - Alterar Registro de Funcion·rio \n");
+    printf("5 - Excluir Registro de Funcion·rios \n");
+    printf("6 - Exclui Arquivo total de Funcion·rios\n");
     printf("7 - Voltar ao Menu principal \n");
     printf("8 - Sair do programa \n");
     printf("Digite uma opcao \n");
@@ -639,7 +639,7 @@ void cadastraForn()
 
         cout<<"\n Digite o nome do fornecedor:";
         cin>>Fornecedor.nomeForn;
-        printf("\n Digite o Endere√ßo:");
+        printf("\n Digite o EndereÁo:");
         cin>>Fornecedor.endeForn;
         printf("\n Digite o Email:");
         cin>>Fornecedor.emailForn;
@@ -663,7 +663,7 @@ void consultaForn()
     {
         system("cls");
         printf("Nome Fornecedor  :        %s\n",Fornecedor.nomeForn);
-        printf("Endere√ßo Fornecedor :       %s\n",Fornecedor.endeForn);
+        printf("EndereÁo Fornecedor :       %s\n",Fornecedor.endeForn);
         printf("Email Fornecedor:     %s\n", Fornecedor.emailForn);
         printf("CNPJ Fornecedor: %s\n",Fornecedor.cnpj);
         printf("\n Digite enter para continuar\n");
@@ -690,17 +690,17 @@ void consulta_nomeForn(){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         if(achou==0)
         {
-            printf("\n O Nome ‚Äö.................:%s",Fornecedor.nomeForn   );
-            printf("\n O Endere√ßo ‚Äö................:%s",Fornecedor.endeForn);
-            printf("\n O Email  ‚Äö........:%s",Fornecedor.emailForn);
-            printf("\n O CNPJ ‚Äö......:%s",Fornecedor.cnpj);
+            printf("\n O Nome Ç.................:%s",Fornecedor.nomeForn   );
+            printf("\n O EndereÁo Ç................:%s",Fornecedor.endeForn);
+            printf("\n O Email  Ç........:%s",Fornecedor.emailForn);
+            printf("\n O CNPJ Ç......:%s",Fornecedor.cnpj);
             printf("\n_____________________________________________\n");
             getch();
             localizou=0;
         }}
 
     if(localizou == 1){
-        printf("\n Fornecedor n√£o Cadastrado\n");
+        printf("\n Fornecedor n„o Cadastrado\n");
         printf("\n Cadastrar Fornecedor <S> ou <N>:");
         cin>>op;
         op = toupper(op);
@@ -722,17 +722,17 @@ void alteraForn(){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         pos++;
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Fornecedor.nomeForn);
-            printf("\n O Endere√ßo ‚Äö................:%s",Fornecedor.endeForn);
-            printf("\n O Email ‚Äö........:%s",Fornecedor.emailForn);
-            printf("\n O CNPJ ‚Äö......:%s",Fornecedor.cnpj);
+            printf("\n O Nome Ç.................:%s",Fornecedor.nomeForn);
+            printf("\n O EndereÁo Ç................:%s",Fornecedor.endeForn);
+            printf("\n O Email Ç........:%s",Fornecedor.emailForn);
+            printf("\n O CNPJ Ç......:%s",Fornecedor.cnpj);
             printf("_____________________________________________\n");
             printf("Digite <enter> para continuar e alterar____________\n");
             getch();
 
-            printf("\n Digite a alter√ß√£o do nome do fornecedor: %s",Fornecedor.nomeForn);
+            printf("\n Digite a alterÁ„o do nome do fornecedor: %s",Fornecedor.nomeForn);
             cin>>Fornecedor.nomeForn;
-            printf("\n Digite o endere√ßo:");
+            printf("\n Digite o endereÁo:");
             cin>>Fornecedor.endeForn;
             printf("\n Digite o email:");
             cin>>Fornecedor.emailForn;
@@ -764,10 +764,10 @@ void excluiForn()
     while(fread(&Fornecedor,sizeof(Fornecedor),1,fFornecedores)==1){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Fornecedor.nomeForn);
-            printf("\n O Endere√ßo ‚Äö................:%s",Fornecedor.endeForn);
-            printf("\n O Email ‚Äö........:%s",Fornecedor.emailForn);
-            printf("\n O CNPJ ‚Äö......:%s",Fornecedor.cnpj);
+            printf("\n O Nome Ç.................:%s",Fornecedor.nomeForn);
+            printf("\n O EndereÁo Ç................:%s",Fornecedor.endeForn);
+            printf("\n O Email Ç........:%s",Fornecedor.emailForn);
+            printf("\n O CNPJ Ç......:%s",Fornecedor.cnpj);
             printf("_____________________________________________\n");
             getch();
         }
@@ -786,7 +786,7 @@ void excluiForn()
     fclose(fAuxForn);
     remove("auxforn.dat");
     fclose(fFornecedores);
-    printf("\n Fornecedor Exclu√≠do - Digite <enter> para continuar___________________\n");
+    printf("\n Fornecedor ExcluÌdo - Digite <enter> para continuar___________________\n");
     getch();
 }
 
@@ -801,7 +801,7 @@ void excl_arqForn(){
         printf("arquivo deletado");}
 
     else{
-        printf("\n Arquivo n√£o foi deletado por sua op√ß√£o");
+        printf("\n Arquivo n„o foi deletado por sua opÁ„o");
         getch();}
     cria_arqForn();}
 
@@ -809,7 +809,7 @@ void excl_arqForn(){
 void menuForn()
 {
     system("cls");
-    printf("Menu de op√ß√µes");
+    printf("Menu de opÁıes");
     printf("\n");
     printf("1 - Cadastrar Fornecedores\n");
     printf("2 - Consultar Listar todos Fornecedores  \n");
@@ -850,7 +850,7 @@ void cadastraProd()
     {
         system("cls");
 
-        cout<<"\n Digite o c√≥digo do produto:";
+        cout<<"\n Digite o cÛdigo do produto:";
         cin>>Produto.codprod;
         printf("\n Digite o Nome:");
         cin>>Produto.nomeprod;
@@ -900,16 +900,16 @@ void consulta_nomeProd(){
         achou=strcmp(Produto.nomeprod,nom_pro);
         if(achou==0)
         {
-            printf("\n O Nome ‚Äö.................:%s",Produto.nomeprod);
-            printf("\n O Codigo ‚Äö................:%d",Produto.codprod);
-            printf("\n O Valor √önico  ‚Äö........:%0.2f",Produto.valorUniprod);
+            printf("\n O Nome Ç.................:%s",Produto.nomeprod);
+            printf("\n O Codigo Ç................:%d",Produto.codprod);
+            printf("\n O Valor ⁄nico  Ç........:%0.2f",Produto.valorUniprod);
             printf("\n_____________________________________________\n");
             getch();
             localizou=0;
         }}
 
     if(localizou == 1){
-        printf("\n Produto n√£o Cadastrado\n");
+        printf("\n Produto n„o Cadastrado\n");
         printf("\n Cadastrar Produto <S> ou <N>:");
         cin>>op;
         op = toupper(op);
@@ -931,16 +931,16 @@ void alteraProd(){
         achou=strcmp(Produto.nomeprod,nom_pro);
         pos++;
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Produto.nomeprod);
-            printf("\n O C√≥digo ‚Äö................:%d",Produto.codprod);
-            printf("\n O Valor ‚Äö........:%0.2f",Produto.valorUniprod);
+            printf("\n O Nome Ç.................:%s",Produto.nomeprod);
+            printf("\n O CÛdigo Ç................:%d",Produto.codprod);
+            printf("\n O Valor Ç........:%0.2f",Produto.valorUniprod);
             printf("_____________________________________________\n");
             printf("Digite <enter> para continuar e alterar____________\n");
             getch();
 
-            printf("\n Digite a alter√ß√£o do nome do fornecedor: %s",Produto.nomeprod);
+            printf("\n Digite a alterÁ„o do nome do fornecedor: %s",Produto.nomeprod);
             cin>>Produto.nomeprod;
-            printf("\n Digite o c√≥digo:");
+            printf("\n Digite o cÛdigo:");
             cin>>Produto.codprod;
             printf("\n Digite o valor:");
             cin>>Produto.valorUniprod;
@@ -970,9 +970,9 @@ void excluiProd()
     while(fread(&Produto,sizeof(Produto),1,fProdutos)==1){
         achou=strcmp(Produto.nomeprod,nom_pro);
         if(achou==0){
-            printf("\n O Nome ‚Äö.................:%s",Produto.nomeprod);
-            printf("\n O C√≥digo ‚Äö................:%d",Produto.codprod);
-            printf("\n O Valor ‚Äö........:%s",Produto.valorUniprod);
+            printf("\n O Nome Ç.................:%s",Produto.nomeprod);
+            printf("\n O CÛdigo Ç................:%d",Produto.codprod);
+            printf("\n O Valor Ç........:%s",Produto.valorUniprod);
             printf("_____________________________________________\n");
             getch();
         }
@@ -991,7 +991,7 @@ void excluiProd()
     fclose(fAuxProd);
     remove("auxprod.dat");
     fclose(fProdutos);
-    printf("\n Produto Exclu√≠do - Digite <enter> para continuar___________________\n");
+    printf("\n Produto ExcluÌdo - Digite <enter> para continuar___________________\n");
     getch();
 }
 
@@ -1006,7 +1006,7 @@ void excl_arqProd(){
         printf("arquivo deletado");}
 
     else{
-        printf("\n Arquivo n√£o foi deletado por sua op√ß√£o");
+        printf("\n Arquivo n„o foi deletado por sua opÁ„o");
         getch();}
     cria_arqProd();}
 
@@ -1014,7 +1014,7 @@ void excl_arqProd(){
 void menuProd()
 {
     system("cls");
-    printf("Menu de op√ß√µes");
+    printf("Menu de opÁıes");
     printf("\n");
     printf("1 - Cadastrar Produtos\n");
     printf("2 - Consultar Listar todos Produtos  \n");
@@ -1023,8 +1023,8 @@ void menuProd()
     printf("5 - Excluir Registro de Produtos \n");
     printf("6 - Exclui Arquivo total de Produto\n");
     printf("7 - Voltar ao Menu principal \n");
-    printf("8 - Sair do Programa");
-    printf("Digite uma op√ß√£o \n");
+    printf("8 - Sair do Programa\n");
+    printf("Digite uma opÁ„o\n");
     cin>>opc;
     switch(opc)
     {
@@ -1042,14 +1042,14 @@ void menuProd()
 void menu()
 {
     system("cls");
-    printf("Menu de op√ß√µes");
+    printf("Menu de opÁıes");
     printf("\n");
     printf("1 - Acessar Sistema Cliente\n");
-    printf("2 - Acessar Sistema Funcion√°rio \n");
+    printf("2 - Acessar Sistema Funcion·rio \n");
     printf("3 - Acessar Sistema Fornecedor \n");
     printf("4 - Acessar Sistema Produto \n");
-    printf("8 - Sair do Programa");
-    printf("Digite uma op√ß√£o: \n");
+    printf("8 - Sair do Programa\n ");
+    printf("Digite uma opÁ„o: \n");
     cin>>opc;
     switch(opc)
     {
@@ -1069,10 +1069,10 @@ int main()//programa prinipal para a chamada de inicial da rotina menu que chama
     cria_arqFunc();
     cria_arqForn();
     cria_arqProd();
-    do //la√ßo de repeti√ß√£o da rotina Menu enquanto n√£o desejo sair do programa
+    do //laÁo de repetiÁ„o da rotina Menu enquanto n„o desejo sair do programa
     {
        menu();
     }
-    while (opc!=8);//Enquanto do la√ßo de repeti√ß√£o at√© optar por opc igual 7 para sair do programa
+    while (opc!=8);//Enquanto do laÁo de repetiÁ„o atÈ optar por opc igual 7 para sair do programa
 }//finaliza o escopo do programa
 

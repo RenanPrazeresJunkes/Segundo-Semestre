@@ -78,7 +78,6 @@ void cria_arqCli() //função que vai criar o arquivo fClientes
         printf("\n Erro de criação do arquivo Clientes");
         return;
     }
-    printf("\n Arquivo Clientes Criado");
     fclose(fClientes); //Fechando o arquivo Clientes
 }//finaliza o escopo da rotina cria arquivo de clientes
 
@@ -87,7 +86,7 @@ void cria_arqAuxCli(){
         system("cls");//system clear screen  - Limpa tela
         printf("\n Erro de criação de arquivo AuxCli");  //cout<<"Erro de criacao de arquivo";
         return;
-    }printf("\n Arquivo AuxCli Criado");
+    }
     fclose(fAuxCli);
 }
 
@@ -98,7 +97,6 @@ void cria_arqProd()
         printf("\n Erro de criação do arquivo Produtos");
         return;
     }
-    printf("\n Arquivo Clientes Criado");
     fclose(fProdutos);
 }
 
@@ -107,7 +105,7 @@ void cria_arqAuxProd(){
         system("cls");
         printf("\n Erro de criação de arquivo AuxProd");
         return;
-    }printf("\n Arquivo AuxProd Criado");
+    }
     fclose(fAuxProd);
 }
 
@@ -118,7 +116,6 @@ void cria_arqFunc()
         printf("\n Erro de criação do arquivo Funcionarios");
         return;
     }
-    printf("\n Arquivo Funcionário Criado");
     fclose(fFuncionarios);
 }
 
@@ -127,7 +124,7 @@ void cria_arqAuxFunc(){
         system("cls");
         printf("\n Erro de criação de arquivo AuxProd");
         return;
-    }printf("\n Arquivo AuxFunc Criado");
+    }
     fclose(fAuxFunc);
 }
 
@@ -139,7 +136,6 @@ void cria_arqForn()
         printf("\n Erro de criação do arquivo Fornecedores");
         return;
     }
-    printf("\n Arquivo Fornecedores Criado");
     fclose(fFornecedores); //Fechando o arquivo Fornecedores
 }
 
@@ -154,7 +150,10 @@ void cria_arqAuxForn(){
 
 //Iniciar as operações com arquivo - Cadastrar, Consultar, Alterar, Excluir
 //Operações do arquivo Clientes
-
+void flushstdin(){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 void cadastraCli() //cadastro do arquivo clientes
 { char op; //variável opção
     system("cls");  //limpa tela
@@ -168,11 +167,11 @@ void cadastraCli() //cadastro do arquivo clientes
 
     fseek(fClientes,sizeof(Cliente),tamanho); //aponta para a posição do arquivo correspondente ao tamanho
     do
-    {
+    {	flushstdin();	
         system("cls");//limpa tela
-        //printf("\n Digite o nome do cliente:");// mostra na tela
-        cout<<"\n Digite o nome do cliente:";//cout - comando output - printf
-        cin>>Cliente.nomeCli; //cin  C - comando in  - input  - Comando de entrada - scanf
+		printf("\n Digite o Nome: ");
+ 		scanf("%[^\n]", Cliente.nomeCli);
+		flushstdin();
         printf("\n Digite o CPFC:");
         cin>>Cliente.CPFC;
         printf("\n Digite a idade:");
@@ -223,7 +222,7 @@ void consulta_nomeCli(){  //lista o registro selecionado pelo usuário do arquivo
     fClientes=fopen("clientes.dat","r+"); // abre o arquivo para leitura e escrita
     fseek(fClientes,sizeof(struct dadosCli),0);//aponta pora o Registro 0(inicial) do arquivo
     printf("\n Digite o Nome p/ Procura : "); //Pergunta ao usuário qual cliente deseja buscar na consulta
-    cin>>nom_pro;//Usário Digita o nome do cliente a ser procurado
+    scanf("%[^\n]", nom_pro);//Usário Digita o nome do cliente a ser procurado
     while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laço de repetição para percorrer registro a registro no arquivo até localizar o cliente desejado
         achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usuário com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
@@ -259,7 +258,7 @@ void alteraCli(){ //Procura o registro selecionado pelo usuário do arquivo clien
     fClientes=fopen("clientes.dat","r+");// abre o arquivo para leitura e escrita
     fseek(fClientes,sizeof(struct dadosCli),0);//aponta pora o Registro 0(inicial) do arquivo
     printf("\n Digite o Nome p/ Procura : ");//Pergunta ao usuário qual cliente deseja buscar na consulta
-    cin>> nom_pro;//Usário Digita o nome do cliente a ser procurado
+    scanf("%[^\n]", nom_pro);//Usário Digita o nome do cliente a ser procurado
     while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laço de repetição para percorrer registro a registro no arquivo até localizar o cliente desejado
         achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usuário com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
@@ -309,7 +308,7 @@ void excluiCli() //Procura o registro selecionado pelo usuário do arquivo client
     fseek(fAuxCli,sizeof(struct dadosCli),0);//aponta por seguração ao registro 0(inicial) do arquivo auxiliar de clientes
     //começa a procura do registro a ser excluído no arquivo clientes
     printf("\n Digite o Nome do cliente p/ Procura : ");//Pergunta ao usuário qual cliente deseja buscar na consulta para ser excluído
-    cin>> nom_pro;//Usário Digita o nome do cliente a ser procurado para exclusão
+    scanf("%[^\n]", nom_pro);//Usário Digita o nome do cliente a ser procurado para exclusão
     while(fread(&Cliente,sizeof(Cliente),1,fClientes)==1){//laço de repetição para ler registro a registro do arquivo clientes até encontrar o desejado
         achou=strcmp(Cliente.nomeCli,nom_pro);//comando que compara as nome digitado pelo usuário com o nome do cliente do registro do arquivo
         //comando strcmp pega o valor hexadecimal dos caracteres da string nome do cliente do registro (Cliente.nomeCli)
@@ -368,6 +367,7 @@ void excl_arqCli(){//função para excluir completamente todo o arquivo de cliente
 
 void menuCli()//criação da função Menu de opções
 { //inicia o escopo da rotina Menu
+	char opc;
     system("cls");//limpa a tela
     printf("Menu de opcoes");//mostra na tela para o usuários as opções de Menu
     printf("\n");//pula linha
@@ -381,16 +381,22 @@ void menuCli()//criação da função Menu de opções
     printf("8 - Fechar o programa \n");
     printf("Digite uma opcao \n");//pede a opção via teclado do usuário
     cin>>opc;//lê a variável global opção do menu para chamar a funçao
+    flushstdin();
     switch(opc)//estrutura de composição de vários if
     {
-        case 1:cadastraCli();break; //caso a opc igual 1 chamada rotina cadastra executando-a retornando para o menu
-        case 2:consultaCli();break;//caso a opc igual 2 chamada rotina consulta Cliente Listar executando-a retornando para o menu
-        case 3:consulta_nomeCli();break;
-        case 4:alteraCli();break;
-        case 5:excluiCli();break;
-        case 6:excl_arqCli();break;
-        case 7:menu();break;
-        case 8:exit(0);//função para sair totalmente do programa
+        case '1':cadastraCli();break; //caso a opc igual 1 chamada rotina cadastra executando-a retornando para o menu
+        case '2':consultaCli();break;//caso a opc igual 2 chamada rotina consulta Cliente Listar executando-a retornando para o menu
+        case '3':consulta_nomeCli();break;
+        case '4':alteraCli();break;
+        case '5':excluiCli();break;
+        case '6':excl_arqCli();break;
+        case '7':menu();break;
+        case '8':exit(0);//função para sair totalmente do programa
+        default:
+    	printf("Valor inválido\n");
+    	printf("Aperte enter para voltar\n");
+    	system("cls");
+    	menuCli();
     }
 }//finaliza o escopo da rotina Menu
 
@@ -413,15 +419,18 @@ void cadastraFunc()
 
     fseek(fFuncionarios,sizeof(Funcionario),tamanho);
     do
-    {
+    {	flushstdin();
         system("cls");
 
-        cout<<"\n Digite o nome do funcionário:";
-        cin>>Funcionario.nomeFunc;
-         printf("\n Digite o Email:");
+	printf("\n Digite o nome do funcionario: ");
+ 	scanf("%[^\n]", Funcionario.nomeFunc);
+	flushstdin();
+    printf("\n Digite o Email:");
         cin>>Funcionario.emailFunc;
-        printf("\n Digite o Endereço:");
-        cin>>Funcionario.endeFunc;
+	printf("\n Digite o endereço do funcionario: ");
+ 	scanf("%[^\n]", Funcionario.endeFunc);
+	flushstdin();
+	 	flushstdin();
         printf("\n Digite o salario:");
         cin>>Funcionario.salario;
         printf("\n Digite o Cpff:");
@@ -467,7 +476,7 @@ void consulta_nomeFunc(){
     fFuncionarios=fopen("funcionarios.dat","r+");
     fseek(fFuncionarios,sizeof(struct dadosFunc),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>>nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Funcionario,sizeof(Funcionario),1,fFuncionarios)==1){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         if(achou==0)
@@ -500,7 +509,7 @@ void alteraFunc(){
     fFuncionarios=fopen("funcionarios.dat","r+");
     fseek(fFuncionarios,sizeof(struct dadosFunc),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Funcionario,sizeof(Funcionario),1,fFuncionarios)==1){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         pos++;
@@ -546,7 +555,7 @@ void excluiFunc()
     fAuxFunc=fopen("auxfunc.dat","r+");
     fseek(fAuxFunc,sizeof(struct dadosFunc),0);
     printf("\n Digite o Nome do funcionário p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Funcionario,sizeof(Funcionario),1,fFuncionarios)==1){
         achou=strcmp(Funcionario.nomeFunc,nom_pro);
         if(achou==0){
@@ -594,7 +603,7 @@ void excl_arqFunc(){
 
 
 void menuFunc()
-{
+{	char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -608,16 +617,22 @@ void menuFunc()
     printf("8 - Sair do programa \n");
     printf("Digite uma opcao \n");
     cin>>opc;
+    flushstdin();
     switch(opc)
     {
-        case 1:cadastraFunc();break;
-        case 2:consultaFunc();break;
-        case 3:consulta_nomeFunc();break;
-        case 4:alteraFunc();break;
-        case 5:excluiFunc();break;
-        case 6:excl_arqFunc();break;
-        case 7:menu();break;
-        case 8:exit(0);
+        case '1':cadastraFunc();break;
+        case '2':consultaFunc();break;
+        case '3':consulta_nomeFunc();break;
+        case '4':alteraFunc();break;
+        case '5':excluiFunc();break;
+        case '6':excl_arqFunc();break;
+        case '7':menu();break;
+        case '8':exit(0);
+        default:
+    	printf("Valor inválido\n");
+    	printf("Aperte enter para voltar\n");
+    	system("cls");
+    	menuFunc();
     }
 }
 
@@ -634,13 +649,15 @@ void cadastraForn()
 
     fseek(fFornecedores,sizeof(Fornecedor),tamanho);
     do
-    {
+    {	flushstdin();
         system("cls");
 
-        cout<<"\n Digite o nome do fornecedor:";
-        cin>>Fornecedor.nomeForn;
-        printf("\n Digite o Endereço:");
-        cin>>Fornecedor.endeForn;
+		printf("\n Digite o nome: ");
+ 		scanf("%[^\n]", Fornecedor.nomeForn);
+	    flushstdin();
+		printf("\n Digite o endereço do fornecedor: ");
+ 		scanf("%[^\n]", Fornecedor.endeForn);
+		flushstdin();
         printf("\n Digite o Email:");
         cin>>Fornecedor.emailForn;
         printf("\n Digite o CNPJ:");
@@ -685,7 +702,7 @@ void consulta_nomeForn(){
     fFornecedores=fopen("fornecedores.dat","r+");
     fseek(fFornecedores,sizeof(struct dadosForn),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>>nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Fornecedor,sizeof(Fornecedor),1,fFornecedores)==1){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         if(achou==0)
@@ -717,7 +734,7 @@ void alteraForn(){
     fFuncionarios=fopen("fornecedores.dat","r+");
     fseek(fFornecedores,sizeof(struct dadosForn),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Fornecedor,sizeof(Fornecedor),1,fFornecedores)==1){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         pos++;
@@ -760,7 +777,7 @@ void excluiForn()
     fAuxForn=fopen("auxforn.dat","r+");
     fseek(fAuxForn,sizeof(struct dadosForn),0);
     printf("\n Digite o Nome do fornecedor p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Fornecedor,sizeof(Fornecedor),1,fFornecedores)==1){
         achou=strcmp(Fornecedor.nomeForn,nom_pro);
         if(achou==0){
@@ -807,7 +824,7 @@ void excl_arqForn(){
 
 
 void menuForn()
-{
+{	char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -821,16 +838,22 @@ void menuForn()
     printf("8 - Sair do Programa \n");
     printf("Digite uma opcao \n");
     cin>>opc;
+    flushstdin();
     switch(opc)
     {
-        case 1:cadastraForn();break;
-        case 2:consultaForn();break;
-        case 3:consulta_nomeForn();break;
-        case 4:alteraForn();break;
-        case 5:excluiForn();break;
-        case 6:excl_arqForn();break;
-        case 7:menu();break;
-        case 8:exit(0);
+        case '1':cadastraForn();break;
+        case '2':consultaForn();break;
+        case '3':consulta_nomeForn();break;
+        case '4':alteraForn();break;
+        case '5':excluiForn();break;
+        case '6':excl_arqForn();break;
+        case '7':menu();break;
+        case '8':exit(0);
+        default:
+    	printf("Valor inválido\n");
+    	printf("Aperte enter para voltar\n");
+    	system("cls");
+    	menuForn();
     }
 }
 
@@ -847,13 +870,14 @@ void cadastraProd()
 
     fseek(fProdutos,sizeof(Produto),tamanho);
     do
-    {
+    {	flushstdin();
         system("cls");
 
-        cout<<"\n Digite o código do produto:";
+	printf("\n Digite o nome do produto: ");
+ 	scanf("%[^\n]", Produto.nomeprod);
+	flushstdin();
+	    cout<<"\n Digite o código do produto:";
         cin>>Produto.codprod;
-        printf("\n Digite o Nome:");
-        cin>>Produto.nomeprod;
         printf("\n Digite o valor:");
         cin>>Produto.valorUniprod;
         tamanho=tamanho+fwrite(&Produto,sizeof(struct dadosProd),1,fProdutos);
@@ -895,7 +919,7 @@ void consulta_nomeProd(){
     fProdutos=fopen("produtos.dat","r+");
     fseek(fProdutos,sizeof(struct dadosProd),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>>nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Produto,sizeof(Produto),1,fProdutos)==1){
         achou=strcmp(Produto.nomeprod,nom_pro);
         if(achou==0)
@@ -926,7 +950,7 @@ void alteraProd(){
     fProdutos=fopen("produtos.dat","r+");
     fseek(fProdutos,sizeof(struct dadosProd),0);
     printf("\n Digite o Nome p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Produto,sizeof(Produto),1,fProdutos)==1){
         achou=strcmp(Produto.nomeprod,nom_pro);
         pos++;
@@ -966,7 +990,7 @@ void excluiProd()
     fAuxProd=fopen("auxprod.dat","r+");
     fseek(fAuxProd,sizeof(struct dadosProd),0);
     printf("\n Digite o Nome do produto p/ Procura : ");
-    cin>> nom_pro;
+    scanf("%[^\n]", nom_pro);
     while(fread(&Produto,sizeof(Produto),1,fProdutos)==1){
         achou=strcmp(Produto.nomeprod,nom_pro);
         if(achou==0){
@@ -1012,7 +1036,7 @@ void excl_arqProd(){
 
 
 void menuProd()
-{
+{	char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -1026,21 +1050,27 @@ void menuProd()
     printf("8 - Sair do Programa\n");
     printf("Digite uma opção\n");
     cin>>opc;
+    flushstdin();
     switch(opc)
     {
-        case 1:cadastraProd();break;
-        case 2:consultaProd();break;
-        case 3:consulta_nomeProd();break;
-        case 4:alteraProd();break;
-        case 5:excluiProd();break;
-        case 6:excl_arqProd();break;
-        case 7:menu(); break;
-        case 8:exit(0);
-    }
+        case '1':cadastraProd();break;
+        case '2':consultaProd();break;
+        case '3':consulta_nomeProd();break;
+        case '4':alteraProd();break;
+        case '5':excluiProd();break;
+        case '6':excl_arqProd();break;
+        case '7':menu(); break;
+        case '8':exit(0);
+    default:
+    	printf("Valor inválido\n");
+    	printf("Aperte enter para voltar\n");
+    	system("cls");
+    	menuProd();}
 }
 
 void menu()
 {
+	char opc;    
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -1053,11 +1083,16 @@ void menu()
     cin>>opc;
     switch(opc)
     {
-        case 1:menuCli();break;
-        case 2:menuFunc();break;
-        case 3:menuForn();break;
-        case 4:menuProd();break;
-        case 8:exit(0);
+        case '1':menuCli();break;
+        case '2':menuFunc();break;
+        case '3':menuForn();break;
+        case '4':menuProd();break;
+        case '8':exit(0);
+    default:
+    	printf("Valor inválido\n");
+    	printf("Aperte enter para voltar\n");
+    	system("cls");
+    	menu();
     }
 }
 

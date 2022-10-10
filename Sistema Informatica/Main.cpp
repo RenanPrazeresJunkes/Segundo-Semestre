@@ -201,8 +201,8 @@ void consultaCli() //lista todos os registros do arquivo cliente
         printf("Nome Cliente  :        %s\n",Cliente.nomeCli);// mostra na tela o campo nome do registro do cliente
         printf("CPFC Cliente :       %s\n",Cliente.CPFC);
         printf("Idade Cliente :       %d\n",Cliente.idadeCli);
-        printf("Salario Ciente:     %.2f\n",Cliente.sbaseCli);
-        printf("Valor Compr Cliente: %.2f\n",Cliente.vcomprasCli);
+        printf("Salario Cliente:     %.2f\n",Cliente.sbaseCli);
+        printf("Valor Compra Cliente: %.2f\n",Cliente.vcomprasCli);
         printf("\n Digite enter para continuar\n");
         getch();//pedi para teclar algo  - enter
     }
@@ -367,6 +367,8 @@ void excl_arqCli(){//função para excluir completamente todo o arquivo de cliente
 
 void menuCli()//criação da função Menu de opções
 { //inicia o escopo da rotina Menu
+while(opc!=8){
+
 	char opc;
     system("cls");//limpa a tela
     printf("Menu de opcoes");//mostra na tela para o usuários as opções de Menu
@@ -375,8 +377,8 @@ void menuCli()//criação da função Menu de opções
     printf("2 - Consultar Listar todos Clintes  \n");
     printf("3 - Consultar Por Nome de Cliente \n");
     printf("4 - Alterar Registro de Cliente \n");
-    printf("5 - Excluir Registro de Clientes \n");
-    printf("6 - Exclui Arquivo total de Clientes\n");
+    printf("5 - Excluir Registro de Cliente \n");
+    printf("6 - Excluir Arquivo total de Clientes\n");
     printf("7 - Voltar ao Menu principal \n");
     printf("8 - Fechar o programa \n");
     printf("Digite uma opcao \n");//pede a opção via teclado do usuário
@@ -397,7 +399,7 @@ void menuCli()//criação da função Menu de opções
     	printf("Aperte enter para voltar\n");
     	system("cls");
     	menuCli();
-    }
+    }}
 }//finaliza o escopo da rotina Menu
 
 
@@ -603,7 +605,8 @@ void excl_arqFunc(){
 
 
 void menuFunc()
-{	char opc;
+{	while(opc!=8){
+    char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -634,7 +637,7 @@ void menuFunc()
     	system("cls");
     	menuFunc();
     }
-}
+}}
 
 void cadastraForn()
 { char op;
@@ -824,7 +827,8 @@ void excl_arqForn(){
 
 
 void menuForn()
-{	char opc;
+{	while(opc!=8){
+	char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -855,7 +859,7 @@ void menuForn()
     	system("cls");
     	menuForn();
     }
-}
+}}
 
 void cadastraProd()
 { char op;
@@ -996,7 +1000,7 @@ void excluiProd()
         if(achou==0){
             printf("\n O Nome ‚.................:%s",Produto.nomeprod);
             printf("\n O Código ‚................:%d",Produto.codprod);
-            printf("\n O Valor ‚........:%s",Produto.valorUniprod);
+            printf("\n O Valor ‚........:%0.2f",Produto.valorUniprod);
             printf("_____________________________________________\n");
             getch();
         }
@@ -1036,7 +1040,8 @@ void excl_arqProd(){
 
 
 void menuProd()
-{	char opc;
+{	while(opc!=8){
+	char opc;
     system("cls");
     printf("Menu de opções");
     printf("\n");
@@ -1066,7 +1071,7 @@ void menuProd()
     	printf("Aperte enter para voltar\n");
     	system("cls");
     	menuProd();}
-}
+}}
 
 void menu()
 {
